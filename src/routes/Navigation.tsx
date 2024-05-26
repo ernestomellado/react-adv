@@ -1,33 +1,38 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import {Routes, Route, Link, BrowserRouter, NavLink, Navigate} from 'react-router-dom'
 import logo from '../logo.svg'
+import { routes } from './routes'
+
 
 export default function Navigation() {
   return (
+    <Suspense fallback={<span>loading..</span>}>
     <BrowserRouter>
         <div className="main-layout">
             <nav>
+                <ul>
                 <img src={ logo } alt="React Logo"/>
-           
-            <ul>
-                <li>
-                    <NavLink to="/home">Home</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/users">Users</NavLink>
-                </li>
-            </ul>
+                {
+                      routes.map(({to, name, path}) => (
+                        <li key ={path}>
+                            <NavLink to={to} className={({isActive})=>isActive? 'nav-active': ''}>{name}</NavLink>
+                        </li>
+                      ))
+                }
+                </ul>
             </nav>
             <Routes>
-                <Route path="/home" element={<h1>home page</h1>}></Route>
-                <Route path="/about" element={<h1>About page</h1>}></Route>
-                <Route path="/users" element={<h1>Users page</h1>}></Route>
-                <Route path="/*" element={<Navigate to="/home" replace />}></Route>
+            
+            {
+                routes.map(({path, Component}) => (
+                        <Route path={path} element={<Component></Component>}></Route>
+                    )) 
+            }
+
+                <Route path="/*" element={<Navigate to={routes[0].to} replace />}></Route>
             </Routes>
         </div>
     </BrowserRouter>
+    </Suspense>
   )
 }
