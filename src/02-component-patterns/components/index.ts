@@ -1,5 +1,5 @@
 import { ProductCard as ProductCardHOC } from './ProductCard';
-import { ProductCardHOCProps } from './../interfaces/interfaces';
+import { ProductCardHOCProps } from '../interfaces/interfaces';
 
 import { ProductButtons } from './ProductButtons';
 import { ProductImage } from './ProductImage';
@@ -18,3 +18,4 @@ export const ProductCard: ProductCardHOCProps = Object.assign( ProductCardHOC, {
 
 
 export default ProductCard;
+
