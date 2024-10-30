@@ -1,0 +1,32 @@
+[
+
+    {
+
+        "type": "input",
+        "name": "firstName",
+        "placeholder":"Nombre...",
+        "label": "First Name",
+        "value" : ""
+
+    },
+
+    {
+
+        "type": "input",
+        "name": "lastName",
+        "placeholder":"Apellido...",
+        "label": "Last Name",
+        "value" : ""
+
+    },
+
+    {
+
+        "type": "email",
+        "name": "email",
+        "placeholder":"Email...",
+        "label": "Email",
+        "value" : ""
+
+    }
+]
